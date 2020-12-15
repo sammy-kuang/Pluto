@@ -1,0 +1,25 @@
+﻿<Properties StartupConfiguration="{204AD7FF-31C9-464B-99F3-6F83BB604660}|Default">
+  <MonoDevelop.Ide.ItemProperties.Pluto PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Rhasspy.cs">
+    <Files>
+      <File FileName="Rhasspy.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Pluto" expanded="True">
+            <Node name="Pluto" expanded="True">
+              <Node name="Rhasspy.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

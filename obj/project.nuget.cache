@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "H40tReV4f3lu28+xVqWJxPgjFnRp+wBI7FS3K1IoLnhphMHEk9/Kfcqk54GCfl+wMkmorFziHX0qHYE+ze9e1w==",
+  "success": true,
+  "projectFilePath": "/home/sammy/Documents/C#/Pluto/Pluto.csproj",
+  "expectedPackageFiles": [
+    "/home/sammy/.nuget/packages/microsoft.netcore.platforms/5.0.0/microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "/home/sammy/.nuget/packages/microsoft.win32.systemevents/5.0.0/microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "/home/sammy/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512",
+    "/home/sammy/.nuget/packages/raylib-cs/3.1.5/raylib-cs.3.1.5.nupkg.sha512",
+    "/home/sammy/.nuget/packages/system.drawing.common/5.0.0/system.drawing.common.5.0.0.nupkg.sha512",
+    "/home/sammy/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512",
+    "/home/sammy/.nuget/packages/system.reactive/4.3.2/system.reactive.4.3.2.nupkg.sha512",
+    "/home/sammy/.nuget/packages/system.threading.channels/4.7.0/system.threading.channels.4.7.0.nupkg.sha512",
+    "/home/sammy/.nuget/packages/websocket.client/4.3.21/websocket.client.4.3.21.nupkg.sha512"
+  ],
+  "logs": []
+}
