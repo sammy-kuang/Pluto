@@ -12,6 +12,7 @@ public class Rhasspy : Module{
     HttpClient client = new HttpClient();
 
     WebClient wb = new WebClient();
+    WebsocketClient websocketClient;
     ManualResetEvent exitEvent = new ManualResetEvent(false);
 
     Thread listeningThread;
@@ -24,18 +25,14 @@ public class Rhasspy : Module{
         listeningThread.Start();
     }
 
-    public string GetTime() {
-        return DateTime.Now.ToString("h:mm tt");
-    }
-
     public void Log(string text) {
         pluto.Log(text);
     }
 
     public void Run() {
-        using (WebsocketClient client = new WebsocketClient(url)) {
-            client.MessageReceived.Subscribe(msg => MessageReceived(msg));
-            client.Start();
+        using (websocketClient = new WebsocketClient(url)) {
+            websocketClient.MessageReceived.Subscribe(msg => MessageReceived(msg));
+            websocketClient.Start();
             Log("opened a websocket");
             exitEvent.WaitOne();
         }
@@ -52,7 +49,7 @@ public class Rhasspy : Module{
     public void ParseIntent(string intent, dynamic json) {
         switch(intent) {
             case "GetTime":
-                Say(GetTime());
+                Say(Pluto.GetTime());
                 break;
             case "PlaySong":
                 pluto.musicSystem.PlayIndex(int.Parse(json.slots.index.ToString())-1);
@@ -87,6 +84,8 @@ public class Rhasspy : Module{
 
     public override void Close() {
         Log("preparing to close Rhasspy thread, ignore core dumped!");
+        exitEvent.Set();
+        websocketClient.Dispose();
         listeningThread.Interrupt();
     }
 }

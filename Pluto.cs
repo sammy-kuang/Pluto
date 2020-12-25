@@ -2,20 +2,17 @@
 using PaperSDL;
 using Raylib_cs;
 using System.Numerics;
-using System.Threading;
 
 public class Pluto : PaperApp
 {
     // Modules
     public Rhasspy rhasspy;
     public MusicSystem musicSystem;
+    public Visuals visuals;
     
     // UI
-    public static int windowWidth = 480;
-    public static int windowHeight = 320;
-    public CenteredTexture symbol;
-    public CenteredText logText;
-    FontData fontData;
+    public static int windowWidth = 1280;
+    public static int windowHeight = 720;
 
 
     // Start
@@ -65,35 +62,36 @@ public class Pluto : PaperApp
     // if we need a window:
     public void WindowStart() {
         Raylib.SetTargetFPS(24);
-        symbol = new CenteredTexture(new Vector2(windowWidth/2, windowHeight/2), Raylib.LoadTexture("assets/pluto.png"));
-        fontData = new FontData(Raylib.LoadFont("assets/EHSMB.TTF"), 15f);
-        logText = new CenteredText(new Vector2(width/2, 20), fontData, Color.WHITE, "Pluto initialization");
+
+        Raylib.SetWindowMinSize(width, height);
     }
 
     // overarching start code
     public override void Start() {
         rhasspy = new Rhasspy(this);
         musicSystem = new MusicSystem(this);
-        
+        visuals = new Visuals(this);
         
         musicSystem.Start();
+        visuals.Start();
 
         rhasspy.Call();
         musicSystem.SetDirectory("/home/sammy/Music/renamer/"); // assign the initial directory
-
     }
 
     // update logic: for music
-    public override void Update()
-    {
+    public override void Update() {
         musicSystem.Update();
+        
+        if(!hasGui) return; // events that only happen if we have a window below
+        visuals.Update();
     }
 
-    // draw is only called when we have a window
+    // draw is only called when we have a window. i want to keep it to strictly drawing
     public override void Draw() {
         Raylib.ClearBackground(Color.BLACK);
-        PaperUtils.DrawCenteredObject(symbol);
-        logText.Draw();
+        visuals.Draw();
+        
     }
 
     public override void Close() {
@@ -106,6 +104,10 @@ public class Pluto : PaperApp
         string log = String.Format("PLUTO: -- pluto {0} --", text);
         Console.WriteLine(log);
         if(!hasGui) return;
-        logText.SetText(log);
+        visuals.Log(log.ToUpper());
+    }
+
+    public static string GetTime() {
+        return DateTime.Now.ToString("h:mm tt");
     }
 }
