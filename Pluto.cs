@@ -11,8 +11,8 @@ public class Pluto : PaperApp
     public Visuals visuals;
     
     // UI
-    public static int windowWidth = 1280;
-    public static int windowHeight = 720;
+    public static int windowWidth = 800;
+    public static int windowHeight = 600;
 
 
     // Start
@@ -76,7 +76,7 @@ public class Pluto : PaperApp
         visuals.Start();
 
         rhasspy.Call();
-        musicSystem.SetDirectory("/home/sammy/Music/renamer/"); // assign the initial directory
+        // musicSystem.SetDirectory("/home/sammy/Music/renamer/"); // assign the initial directory
     }
 
     // update logic: for music
@@ -91,7 +91,6 @@ public class Pluto : PaperApp
     public override void Draw() {
         Raylib.ClearBackground(Color.BLACK);
         visuals.Draw();
-        
     }
 
     public override void Close() {
@@ -105,6 +104,13 @@ public class Pluto : PaperApp
         Console.WriteLine(log);
         if(!hasGui) return;
         visuals.Log(log.ToUpper());
+    }
+
+    public void LogError(string text) {
+        string error = String.Format("ERROR: -- {0} --", text);
+        Console.WriteLine(error);
+        if(!hasGui) return;
+        visuals.Log(error.ToUpper());
     }
 
     public static string GetTime() {

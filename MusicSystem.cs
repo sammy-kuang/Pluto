@@ -6,7 +6,7 @@ using PaperSDL;
 public class MusicSystem : Module {
     
     public Music music = new Music();
-    public float volume = 0.05f;
+    public float volume = 0.5f;
     public string[] musicFiles;
 
     public MusicSystem(Pluto pluto) : base(pluto) {}
@@ -49,6 +49,13 @@ public class MusicSystem : Module {
 
     public void ModifyVolume(float mod) {
         volume += mod;
+        SetVolume(volume);
+    }
+
+    public void SetVolume(float newVolume) {
+        volume = newVolume;
         Raylib.SetMusicVolume(music, volume);
+
+        pluto.visuals.UpdateVolumeSlider(volume);
     }
 }

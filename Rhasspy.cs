@@ -71,6 +71,9 @@ public class Rhasspy : Module{
             case "Shutdown":
                 pluto.shouldClose = true;
                 break;
+            default:
+                pluto.Log("failed to catch an intent");
+                break;
         }
     }
 
